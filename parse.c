@@ -1,6 +1,3 @@
-//
-// Created by huang on 2019/7/25.
-//
 
 #include "parse.h"
 #include "http.h"
