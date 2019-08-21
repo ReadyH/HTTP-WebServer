@@ -1,7 +1,3 @@
-//
-// Created by huang on 2019/7/25.
-//
-
 #include "utils.h"
 #include <signal.h>
 #include <string.h>
@@ -32,7 +28,7 @@ int nonBlock(int fd) {
     return 0;
 }
 
-size_t Writen(int fd, void *usrBuf, size_t n) {
+size_t writen(int fd, void *usrBuf, size_t n) {
     size_t nleft = n;
     ssize_t nwritten;
     char *bufp = (char *)usrBuf;
