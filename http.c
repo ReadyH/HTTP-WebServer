@@ -193,7 +193,7 @@ void handleStatic(int fd, char* filename, size_t filesize, httpOut* out){
     sprintf(header, "%s\r\n", header);
 
     // 发送报文头部并校验完整性
-    size_t sendLen = (size_t)Writen(fd, header, strlen(header));
+    size_t sendLen = (size_t)writen(fd, header, strlen(header));
 
     if(sendLen != strlen(header)){
 
@@ -208,7 +208,7 @@ void handleStatic(int fd, char* filename, size_t filesize, httpOut* out){
     close(srcFd);
 
     // 发送文件并校验完整性
-    sendLen = Writen(fd, srcAddr, filesize);
+    sendLen = writen(fd, srcAddr, filesize);
     if(sendLen != filesize){
         perror("Send file failed");
         return;
@@ -256,8 +256,8 @@ void handleError(int fd, char *cause, char *errNum, char *shortMsg, char *longMs
     // Add 404 Page
 
     // 发送错误信息
-    Writen(fd, header, strlen(header));
-    Writen(fd, body, strlen(body));
+    writen(fd, header, strlen(header));
+    writen(fd, body, strlen(body));
     return;
 }
 
