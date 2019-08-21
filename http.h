@@ -84,4 +84,4 @@ const char* getFileType(const char* type);
 int errorProcess(struct stat* sbufptr, char *filename, int fd);
 void handleError(int fd, char *cause, char *errNum, char *shortMsg, char *longMsg);
 
-#endif //CLION_HTTP_H
+#endif //HTTP_H
