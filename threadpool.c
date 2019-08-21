@@ -1,7 +1,3 @@
-/*
- * 线程池 - 源文件
- */
-
 #include "threadpool.h"
 #include <stdio.h>
 #include <stdlib.h>
