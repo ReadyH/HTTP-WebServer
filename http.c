@@ -1,6 +1,5 @@
 
 #include "http.h"
-
 #include "utils.h"
 #include "timer.h"
 #include "epoll.h"
@@ -13,6 +12,29 @@
 #include <unistd.h>
 
 static char *ROOT = NULL;
+
+
+// 初始化请求结构
+int initRequest(httpRequest* request, int fd, int epoll_fd, char* path) {
+    request->fd = fd;
+    request->epollFd = epoll_fd;
+    request->pos = 0;
+    request->last = 0;
+    request->state = 0;
+    request->root = path;
+    INIT_LIST_HEAD(&(request->list));
+    return 0;
+}
+
+// 初始化输出结构
+int initHttpOut(httpOut* out, int fd){
+    out->fd = fd;
+    out->keepAlive = 1;
+    out->status = 200;
+    out->modified = 1;
+
+    return 0;
+}
 
 // 错误处理函数集合
 headerHandler hHandlers[] = {
@@ -43,29 +65,6 @@ mimeType mime[] = {
         {".css", "text/css"},
         {NULL ,"text/plain"}
 };
-
-// 初始化请求结构
-int initRequest(httpRequest* request, int fd, int epoll_fd, char* path) {
-    request->fd = fd;
-    request->epollFd = epoll_fd;
-    request->pos = 0;
-    request->last = 0;
-    request->state = 0;
-    request->root = path;
-    INIT_LIST_HEAD(&(request->list));
-    return 0;
-}
-
-// 初始化输出结构
-int initHttpOut(httpOut* out, int fd){
-    out->fd = fd;
-
-    out->keepAlive = 1;
-    out->modified = 1;
-    out->status = 200;
-
-    return 0;
-}
 
 // 处理请求头
 void handleHttpHeader(httpRequest* request, httpOut* out){
