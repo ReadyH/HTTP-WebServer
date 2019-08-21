@@ -37,8 +37,8 @@
 2. 执行make命令 `make`
 3. 开启服务器 `./Server`
 4. 客户端连接测试
-    - 确定服务器ip地址 `serverip`
-    - 在浏览器输入 `serverip:9190`
+    - 确定服务器ip地址 `serverip`和端口号`port`
+    - 在浏览器输入 `serverip:port`
 
 ---
 
