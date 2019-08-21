@@ -1,7 +1,3 @@
-//
-// Created by huang on 2019/7/25.
-//
-
 #ifndef PARSE_H
 #define PARSE_H
 
@@ -22,4 +18,4 @@ int httpParseRequestLine(httpRequest* request);
 // http请求体解析
 int httpParseRequestBody(httpRequest* request);
 
-#endif //PARSE_H
+#endif // PARSE_H
