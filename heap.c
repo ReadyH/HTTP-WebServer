@@ -59,9 +59,9 @@ T deleteMin(PriorityQueue pq) {
     T lastElement = pq->elements[pq->size--];
     for(i = 1; i * 2 <= pq->size; i = child) {
         child = i * 2;
-        if(child != pq->size && compare(pq->elements[child], pq->elements[child + 1]))
+        if(child != pq->size && compare(pq->elements[child + 1], pq->elements[child]))
             child++;
-        if(compare(lastElement, pq->elements[child]))
+        if(compare(pq->elements[child], lastElement))
             pq->elements[i] = pq->elements[child];
         else
             break;
