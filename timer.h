@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "http.h"
 
-#define TIMEOUT 1000
+#define TIMEOUT 500
 #define PQ_SIZE 10
 
 // 处理超时节点的函数指针
