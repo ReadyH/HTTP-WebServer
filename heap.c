@@ -33,7 +33,7 @@ void makeEmpty(PriorityQueue pq) {
 
 // 定时器节点比较函数
 int compare(T t1, T t2) {
-    if(t1 == NULL) {
+    if(t2 == NULL) {
         return 0;
     }
     return (t1->key < t2->key) ? 1 : 0;
@@ -44,7 +44,8 @@ void insert(T t, PriorityQueue pq) {
     int i = 0;
     if(isFull(pq))
         errorHandler("Priority queue is full");
-    for(i = ++pq->size; compare(pq->elements[i / 2], t); i /= 2)
+    // for(i = ++pq->size; compare(pq->elements[i / 2], t); i /= 2)
+    for(i = ++pq->size; compare(t, pq->elements[i / 2]); i /= 2)
         pq->elements[i] = pq->elements[i / 2];
     pq->elements[i] = t;
 }
